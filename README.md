@@ -21,13 +21,13 @@ You can install the necessary libraries using:
 
 ```bash
 pip install scikit-learn numpy pandas matplotlib torch torchvision joblib
-
+```
 
 # Instructions to Train/Validate the Model
 
 ## Training the Decision Tree Classifier
 
-- Open and run `main.ipynb` to train the decision tree classifier on the Places365 dataset using both supervised and semi-supervised learning approaches.
+- Open and run `main.ipynb` and `adjusted_semi.ipynb` to train the decision tree classifier on the Places365 dataset using both supervised and semi-supervised learning approaches.
 
 ## Training the CNN Model
 
@@ -40,8 +40,7 @@ pip install scikit-learn numpy pandas matplotlib torch torchvision joblib
 - Load the pre-trained decision tree model using Joblib:
   ```python
   import joblib
-  model = joblib.load('path_to_saved_dt_model.joblib')
-
+  model = joblib.load('path_to_saved_dt_model.joblib')```
 
 ## Evaluate the model on the sample test dataset:
 
@@ -51,7 +50,7 @@ from sklearn.metrics import classification_report
 # Assuming X_test and y_test are already defined
 predictions = model.predict(X_test)
 print(classification_report(y_test, predictions))
-
+```
 
 ## CNN Model
 ### Load the pre-trained CNN model:
@@ -60,7 +59,7 @@ print(classification_report(y_test, predictions))
 import torch
 model = torch.load('path_to_saved_cnn_model.pth')
 model.eval()
-
+```
 
 ## Evaluate the model on the sample test dataset:
 
@@ -91,7 +90,7 @@ with torch.no_grad():
 # Compute and print classification report
 from sklearn.metrics import classification_report
 print(classification_report(all_labels, all_predictions))
-
+```
 ## Source Code
 The source code for both the Decision Tree and CNN models can be found in the following notebooks:
 
@@ -107,21 +106,3 @@ Author(s):
 Supervised: Raghav Senwal 
 CNN: Raghav Senwal
 Semi-supervised: Alireza Lorestani, Nasim Fani
-
-Trained models have been included in the src file, one can easily load them using joblib library and use the model to verify classification on unseen data.
-
-Code example:
-```
-model_path = '<insert_external_path>/<insert_model_name>.joblib'
-loaded_clf = joblib.load(model_path)
-loaded_y_pred = loaded_clf.predict(X_test)
-loaded_accuracy = accuracy_score(y_test, loaded_y_pred)
-print(f'Loaded Model Accuracy: {loaded_accuracy * 100:.2f}%')
-```
-Trained model for CNN is uploaded on Moodle.
-
-Code example to load model:
-```
-model.load_state_dict(torch.load('<model_name>.pth'))
-
-```
