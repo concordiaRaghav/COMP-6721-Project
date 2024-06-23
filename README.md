@@ -19,6 +19,6 @@ Trained model for CNN is uploaded on Moodle.
 
 Code example to load model:
 ```
-model.load_state_dict(torch.load('best_model.pth'))
+model.load_state_dict(torch.load('<model_name>.pth'))
 
 ```
